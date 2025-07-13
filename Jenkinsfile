@@ -11,6 +11,16 @@ pipeline {
     }
 
     stages {
+
+        stage('clean Workspace'){
+            steps{
+                cleanWs()
+            }
+        }
+
+
+
+        
         stage('git checkout') {
             steps {
                 git branch: 'master', url: 'https://github.com/PankajDhapade1998/Ekart.git'
@@ -82,7 +92,7 @@ pipeline {
         stage('EKS and Kubectl configuration'){
             steps{
                 script{
-                    sh 'aws eks update-kubeconfig --region ap-south-1 --name pankaj-cluster'
+                    sh 'aws eks update-kubeconfig --region ap-south-1 --name ankit-cluster'
                 }
             }
         }
